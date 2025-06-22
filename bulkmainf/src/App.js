@@ -14,8 +14,7 @@ function App() {
 
   function send() {
     setStatus(true);
-    axios
-      .post("http://localhost:5000/send", { message: message, idlist: emails })
+    axios.post("https://bulkmail-1-3zk6.onrender.com/send", { message: message, idlist: emails })
       .then(function (data) {
         console.log(data);
         if (data.data) {
@@ -44,8 +43,8 @@ function App() {
       const worksheet = workbook.Sheets[sheetName];
 
       const emails = XLSX.utils.sheet_to_json(worksheet, { header: "A" });
-      const elist= emails.map(function(item){return item.A});
-setEmails(elist);
+      const elist = emails.map(function (item) { return item.A });
+      setEmails(elist);
       console.log("Emails:", elist);
     };
 
